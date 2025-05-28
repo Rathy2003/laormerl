@@ -1,0 +1,76 @@
+<div class="movie-wrapper">
+    <div class="movie-label">
+        <h4>LATEST POST</h4>
+        <a class="button button-primary" [routerLink]="'/category/latest-post'"
+            [ngClass]="latest_movie.length < 12 ? 'disabled': ''">See All</a>
+    </div>
+
+    <div class="movie-list">
+        @defer (when !is_loading) {
+            @for (item of latest_movie; track $index) {
+                <div class="movie-card" [routerLink]="'movie/'+item.slug">
+                    <div class="movie-thumbnail-wrapper">
+                        @if (item.thumbnails != null) {
+                            <div class="movie-thumbnail"
+                                [style]="'background-image: url('+getImage(item.thumbnails)+')'">
+                            </div>
+                        }
+
+                        @else {
+                            <div class="movie-thumbnail"
+                                style="background-image: url('/no-image.png');background-color: #1f1f1f;background-size: 70%;">
+                            </div>
+                        }
+
+                    </div>
+                    <p [innerText]="item.name"></p>
+                </div>
+            }
+        }@placeholder(minimum 1200ms){
+            @for (i of generateSkeleton(); track $index) {
+                <div class="movie-card">
+                    <app-skeleton></app-skeleton>
+                </div>
+            }
+        }
+    </div>
+    <div class="end-line"><span>That All</span></div>
+</div>
+
+
+@if(!is_loading){
+    @for (item of category_list; track $index) {
+        @if(item.movies.length > 0){
+            <div class="movie-wrapper">
+                <div class="movie-label">
+                    <h4 [innerText]="item.name" style="text-transform: uppercase;"></h4>
+                    <a class="button button-primary" [routerLink]="'/category/'+item.slug"
+                        [ngClass]="getMovieByCategoryId(item.id).length < 12 ? 'disabled': ''">See All</a>
+                </div>
+
+                <div class="movie-list">
+                    @for (movie of getMovieByCategoryId(item.id); track $index) {
+                        <div class="movie-card" [routerLink]="'movie/'+movie.slug">
+                            <div class="movie-thumbnail-wrapper">
+                                @if (movie.thumbnails != null) {
+                                <div class="movie-thumbnail"
+                                    [style]="'background-image: url('+getImage(movie.thumbnails)+')'">
+                                </div>
+                                }
+
+                                @else {
+                                <div class="movie-thumbnail"
+                                    style="background-image: url('/no-image.png');background-color: #1f1f1f;background-size: 70%;">
+                                </div>
+                                }
+                            </div>
+                            <p [innerText]="movie.name"></p>
+                        </div>
+                    }
+
+                </div>
+                <div class="end-line"><span>That All</span></div>
+            </div>
+        }
+    }
+}

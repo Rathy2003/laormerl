@@ -1,0 +1,76 @@
+<div id="container">
+    <!-- content -->
+    <div id="content">
+        @if(movie_detail){
+            <div id="movie-detail">
+                <h2 [innerText]="movie_detail.name"></h2>
+                <p [innerText]="posted_date"></p>
+            </div>
+        }
+   
+        <div id="movie-wrapper">
+            <div id="movie">
+                @if(movie_detail){
+                    @defer (on idle) {
+                        @if(movie_detail.player == 'ok.ru'){
+                            <app-okru [url]="currentEpisode.url"></app-okru>
+                        }
+                        @else {
+                            <app-video-js [url]="currentEpisode.url"></app-video-js>
+                        }
+                    }@placeholder(minimum 1000ms) {
+                        <div id="player-init-loading" style="background-image: url('loading.gif');">
+                        </div>
+                    }
+                }
+            </div>
+            <div id="epsode-wrapper">
+                <div>
+                    <h4>EPSODE LIST</h4>
+                    <div id="social-sharing">
+                       <span> Sharing :</span>
+                       <div>
+                          <i class="fa-brands fa-facebook"></i>
+                          <i class="fa-solid fa-link"></i>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div id="episode-item-wrapper">
+                   @if(movie_detail){
+                        @for (item of movie_detail.episodes; track $index) {
+                            <div (click)="onChangeEpisode(item)" [innerText]="$index+1" [ngClass]="item.id == currentEpisode?.id ? 'epsode-item active' : 'epsode-item'"> 
+                            </div>
+                        }
+                   }
+                </div>
+            </div>      
+        </div>
+    </div>
+
+    <div id="sidebar">
+        @if (related_movie_list.length > 0) {
+            <div id="related-movie-header">
+                <h3>Related Movie</h3>
+            </div>
+
+            <div id="movie-list">
+                @for (item of related_movie_list; track $index) {
+                    <div class="movie-card">
+                        @if(item.thumbnails !== null){
+                            <div class="thumbnail" [style]="'background-image: url('+getImage(item.thumbnails || '')+')'"></div>
+                        }
+                        @else {
+                            <div class="thumbnail"  style="background-image: url('/no-image.png');background-color: #1f1f1f;background-size: 70%;">
+                            </div>
+                        }
+                        
+                        <h4 [innerText]="item.name"></h4>
+                    </div>
+                }
+            </div>
+        }
+        
+    </div>
+    <!-- sidebar -->
+</div>

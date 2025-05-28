@@ -1,0 +1,45 @@
+<div class="movie-wrapper">
+    <div class="movie-label">
+        <h4 [innerText]="selected_category?.name" style="text-transform: uppercase;"></h4>
+    </div>
+
+    <div class="movie-list">
+        @for (item of getPage(page); track $index) {
+            <div class="movie-card" [routerLink]="'/movie/'+item.slug">
+                <div class="movie-thumbnail-wrapper">
+                    @if (item.thumbnails != null) {
+                        <div class="movie-thumbnail"
+                            [style]="'background-image: url('+getImage(item.thumbnails)+')'">
+                        </div>
+                    }
+
+                    @else {
+                        <div class="movie-thumbnail"
+                            style="background-image: url('/no-image.png');background-color: #1f1f1f;background-size: 70%;">
+                        </div>
+                    }
+                </div>
+                <p [innerText]="item.name"></p>
+            </div>
+        }
+    </div>
+</div>
+
+@if (totalPage > 1) {
+    <br/>
+    <div class="pagination-container">
+        <ul class="pagination">
+            <li class="page-item" [ngClass]="page === 1 ? 'disabled' : ''">
+                <a (click)="getPage(page-1)" class="page-link" aria-label="Previous">&laquo;</a>
+            </li>
+
+            @for (paginate of getTotalPaginate(); track $index) {
+                <li class="page-item" [ngClass]="($index + 1) === page ? 'active' : ''"><a (click)="getPage(paginate+1)" class="page-link" [innerText]="paginate + 1"></a></li>
+            }
+            <li class="page-item" [ngClass]="page == totalPage ? 'disabled' : ''"><a (click)="getPage(page+1)" class="page-link" aria-label="Next">&raquo;</a></li>
+        </ul>
+    </div>
+    <br/>
+}
+
+

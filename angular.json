@@ -9,7 +9,7 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
-      "architect": {
+     "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
@@ -27,6 +27,7 @@
               }
             ],
             "styles": [
+              "node_modules/video.js/dist/video-js.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -92,5 +93,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "a63417bb-b98f-4a70-b85c-78a8b2685715"
   }
 }

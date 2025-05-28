@@ -1,0 +1,82 @@
+nav{
+    color: white;
+    position: sticky;
+    background-color: #101010;
+    top: 0;
+    z-index: 1;
+    box-shadow: 0 0 5px #000000a1;
+
+    & > div{
+        width: 90%;
+        margin: 0 auto;
+        padding: 15px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & > div#left{
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 25px;
+
+            & > div#logo{
+                font-size: 25px;
+            }
+
+            & > ul{
+                list-style-type: none;
+                display: flex;
+                align-items: center;
+                gap: 15px;
+
+                & a{
+                    font-size: 18px;
+                    color: white;
+                    text-decoration: none;
+                    &:hover{
+                        color: var(--primary-color);
+                    }
+                }
+
+                & a.active{
+                    color: var(--primary-color);
+                    position: relative;
+                    &::after{
+                        position: absolute;
+                        top: 110%;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        content: "";
+                        background: var(--primary-color);
+                        width: 5px;
+                        height: 5px;
+                        border-radius: 50%;
+                    }
+                }
+            }
+        }
+
+        & > div#right{
+            & div#search-wrapper{
+                & input{
+                    font-size: 18px;
+                    padding: 10px 15px;
+                    min-width: 350px;
+                    border: none;
+                    border-radius: 5px;
+                    outline: none;
+                    background-color: #282828;
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+.container{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 25px;
+    color: white;
+}

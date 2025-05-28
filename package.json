@@ -17,8 +17,12 @@
     "@angular/platform-browser": "^19.2.0",
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
+    "dayjs": "^1.11.13",
+    "dotenv": "^16.5.0",
+    "relative-time": "^1.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "videojs-youtube": "^3.0.1",
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
@@ -32,6 +36,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.7.2"
+    "typescript": "~5.7.2",
+    "video.js": "^8.22.0"
   }
 }

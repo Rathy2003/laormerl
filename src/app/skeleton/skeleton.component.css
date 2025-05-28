@@ -1,0 +1,108 @@
+.skeleton-poster-card {
+    /* background-color: #2c2c2c; */
+    /* Slightly lighter card background */
+    /* border-radius: 12px; */
+    /* Rounded corners for the card */
+    /* padding: 0; */
+    /* Ensuring no padding on the card itself */
+    width: 100%;
+    max-width: 350px;
+    /* Max width of the poster card */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    /* Ensures shimmer stays within card bounds */
+}
+
+.skeleton-item {
+    background-color: #4a4a4a;
+    /* Base color for skeleton elements */
+    border-radius: 8px;
+    /* Rounded corners for skeleton items */
+    position: relative;
+    overflow: hidden;
+    /* Important for the shimmer effect */
+    /* margin: 24px; */
+    /* General margin removed */
+}
+
+.skeleton-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    /* Start shimmer off-screen to the left */
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+    animation: shimmer 1.8s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(250%);
+        /* Move shimmer across the element */
+    }
+}
+
+.skeleton-image {
+    width: 100%;
+    /* Takes full width of the card */
+    margin-bottom: 20px;
+    /* Space below the image */
+    border-radius: 0;
+    aspect-ratio: 2 / 2.7
+    /* Optional: remove border radius if it should be flush with top card edges */
+    /* If card has top-left/right radius, image might need it too, or be inside a padded container */
+}
+
+.skeleton-title {
+    width: 70%;
+    height: 32px;
+    margin-top: 24px;
+    /* Space above the title (from image or card top) */
+    margin-bottom: 12px;
+    /* Space below the title */
+    margin-left: auto;
+    margin-right: auto;
+    /* Center the title */
+}
+
+.skeleton-text-line {
+    width: 90%;
+    height: 18px;
+    margin-top: 10px;
+    /* Space above text line */
+    margin-bottom: 10px;
+    /* Space below text line */
+    /* margin-left: auto; */
+    margin-right: auto;
+    /* Center the text line */
+}
+
+.skeleton-text-line-2 {
+     width: 60%;
+    height: 18px;
+    margin-top: 10px;
+    /* Space above text line */
+    margin-bottom: 10px;
+    /* Space below text line */
+    /* margin-left: auto; */
+    margin-right: auto;
+    /* Center the text line */
+}
+
+.skeleton-button {
+    width: 40%;
+    height: 40px;
+    margin-top: 20px;
+    /* Space above button */
+    margin-bottom: 24px;
+    /* Space below button (also acts as bottom padding for the card content) */
+    margin-left: auto;
+    margin-right: auto;
+    /* Center the button */
+}

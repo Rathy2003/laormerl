@@ -1,0 +1,25 @@
+<nav>
+    <div>
+        <div id="left">
+            <div id="logo">
+                LAOR MERL
+            </div>
+            <ul>
+                <li><a [routerLink]="''" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a></li>
+                <li><a [routerLink]="'/category/latest-post'" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Latest Post</a></li>
+                @for (item of category_list; track $index) {
+                    <li><a [routerLink]="`category/${item.slug}`" [innerHTML]="item.name" routerLinkActive="active"></a></li>
+                }
+            </ul>
+        </div>
+        <div id="right">
+            <div id="search-wrapper">
+                <input type="search" placeholder="Search for movie you want...">
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <router-outlet />
+</div>

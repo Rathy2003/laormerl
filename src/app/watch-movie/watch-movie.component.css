@@ -1,0 +1,163 @@
+div#container{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 25px;
+
+    & > div#content{
+        width: 70%;
+
+        & > div#movie-detail{
+                margin: 25px 0;
+                border-bottom: 3px solid var(--primary-color);
+                padding-bottom: 13px;
+            & p{
+                margin-top: 3px;
+                color: var(--secondary-text);
+                font-size: 15px;
+            }
+        }
+        & div#movie-wrapper{
+
+            & > div#movie{
+                /* background-color: #1f1e1e; */
+                aspect-ratio: 2/1.2;
+                position: relative;
+            
+                &:has(div#player-init-loading){
+                    background-color: var(--secondary-bg-color);
+                }
+
+                & div#player-init-loading{
+                    height: 153px;
+                    width: 153px;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: contain;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+
+                }
+            }
+
+            & div#epsode-wrapper{
+                margin-top: 20px;
+                & div:first-child{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    & h4{
+                        margin-bottom: 8px;
+                        position: relative;
+                        margin-left: 10px;
+                        &::before{
+                            content: "";
+                            position: absolute;
+                            height: 100%;
+                            width: 4px;
+                            background-color: yellow;
+                            top: 0;
+                            left: -10px;
+                        }
+                    }
+
+                    & #social-sharing{
+                        display: flex;
+                        gap: 15px;
+                        align-items: center;
+                        font-size: 20px;
+                        margin-bottom: 8px;
+                        & span{
+                            font-size: 15px;
+                        }
+
+                        & > div{
+                            display: flex;
+                            gap: 10px;
+
+                            & i{
+                                cursor: pointer;
+                                &:hover{
+                                    color: rgb(197, 197, 197);
+                                }
+                            }
+                        } 
+                    }
+                }
+                
+
+                & #episode-item-wrapper{
+                    margin-top: 15px;
+                    flex-wrap: wrap;
+                    display: flex;
+                    gap: 15px;
+                    & div.epsode-item{
+                        background-color: #444444;
+                        height: 40px;
+                        width: 90px;
+                        border-radius: 3px;
+                        user-select: none;
+                        font-size: 18px;
+                        font-weight: 400;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        cursor: pointer;
+
+                        &:hover{
+                            background-color: #323131;
+                        }
+                    }
+                    & .active{
+                        background-color: yellow !important;
+                        color: black;
+                    }
+                }
+            }
+        }
+    }
+
+    & > #sidebar{
+        width: 25%;
+        background-color: var(--secondary-bg-color);
+        padding: 15px;
+        border-radius: 5px;
+
+        & > div#related-movie-header{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 3px solid rgba(255, 255, 255, 0.63);
+            padding-bottom: 10px;
+            & h3{
+                width: max-content;
+                text-align: center;
+            }
+        }
+
+        & #movie-list{
+            margin-top: 25px;
+            display: grid;
+            grid-template-columns: repeat(2,45%);
+            gap: 20px;
+
+            & div.movie-card{
+                & div.thumbnail{
+                    width: 100%;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: cover;
+                    aspect-ratio: 2 / 2.5;
+                }
+
+                & h4{
+                    margin-top: 15px;
+                    font-size: 15px;
+                    text-align: center;
+                    user-select: none;
+                }
+            }
+        }
+    }
+}
