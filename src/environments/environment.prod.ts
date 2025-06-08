@@ -1,4 +1,4 @@
 export const environment = {
-    API_BASE_URL:"https://laormerlbackend.duckdns.org/api",
-    IMAGE_BASE_URL:"https://laormerlbackend.duckdns.org/storage"
+    API_BASE_URL:"https://laormerl-admin.checkplify168.xyz/api",
+    IMAGE_BASE_URL:"https://laormerl-admin.checkplify168.xyz/storage"
 }
